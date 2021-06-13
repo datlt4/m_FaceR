@@ -1,0 +1,5 @@
+outs:
+- md5: a17d05bd522c52d84eca14327a23d494
+  size: 180566744
+  path: lfw.tgz
+  isexec: true

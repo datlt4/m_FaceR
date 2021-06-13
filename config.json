@@ -1,0 +1,316 @@
+{
+    "Application": {
+        "Source": 0,
+        "Title": "HNIW"
+    },
+    "Model Zoo": {
+        "Face Detection": {
+            "Retina Face": {
+                "Pytorch": "./model-zoo/retinaface_mobinet/mobilenet_0_25_Final.pth"
+            }
+        },
+        "Face Recognition": {
+            "InsightFace": {
+                "MxNet": "./model-zoo/insightface-r100-ii/model"
+            },
+            "MagFace": {
+                "Pytorch": "model-zoo/magface_iresnet100/magface_epoch_00025.pth"
+            }
+        }
+    },
+    "Dataset Zoo": {},
+    "Server": {
+        "All": {
+            "Host": "0.0.0.0",
+            "Port": "2210"
+        },
+        "Face Detection": {
+            "Host": "0.0.0.0",
+            "Port": "2211",
+            "Headers": {
+                "content-type": "image/png"
+            },
+            "encode type": ".png",
+            "mimetype": "application/json",
+            "route": "/face_detection/inference"
+        },
+        "Face Recognition": {
+            "Host": "0.0.0.0",
+            "Port": "2212",
+            "Headers": {
+                "content-type": "image/png"
+            },
+            "mimetype": "application/json",
+            "route": "/face_recognize/inference"
+        },
+        "Faiss": {
+            "Host": "0.0.0.0",
+            "Port": "2213",
+            "Headers": {
+                "content-type": "application/json"
+            },
+            "mimetype": "application/json",
+            "route": {
+                "add": "/faiss/add",
+                "search": "/faiss/search",
+                "ntotal": "/faiss/ntotal",
+                "reset": "/faiss/reset",
+                "remove_ids": "/faiss/remove_ids",
+                "remove_indices": "/faiss/remove_indices",
+            },
+            "save_dir": "database/db.bin"
+        }
+    },
+    "Parameters": {
+        "Face Detection": {
+            "Retina Face": {
+                "Height Frame": 500,
+                "Padding Face": 0.1,
+                "Align Face": true,
+                "Crop Size": [
+                    112,
+                    112
+                ],
+                "cfg_mnet": {
+                    "name": "mobilenet0.25",
+                    "min_sizes": [
+                        [
+                            16,
+                            32
+                        ],
+                        [
+                            64,
+                            128
+                        ],
+                        [
+                            256,
+                            512
+                        ]
+                    ],
+                    "steps": [
+                        8,
+                        16,
+                        32
+                    ],
+                    "variance": [
+                        0.1,
+                        0.2
+                    ],
+                    "clip": false,
+                    "loc_weight": 2.0,
+                    "gpu_train": true,
+                    "batch_size": 32,
+                    "ngpu": 1,
+                    "epoch": 250,
+                    "decay1": 190,
+                    "decay2": 220,
+                    "image_size": 640,
+                    "pretrain": true,
+                    "return_layers": {
+                        "stage1": 1,
+                        "stage2": 2,
+                        "stage3": 3
+                    },
+                    "in_channel": 32,
+                    "out_channel": 64
+                },
+                "Threshold": {
+                    "confidence": 0.8,
+                    "iou-face-tracker": 0.5
+                },
+                "Reference Facial Points": [
+                    [
+                        30.29459953,
+                        51.69630051
+                    ],
+                    [
+                        65.53179932,
+                        51.50139999
+                    ],
+                    [
+                        48.02519989,
+                        71.73660278
+                    ],
+                    [
+                        33.54930115,
+                        92.3655014
+                    ],
+                    [
+                        62.72990036,
+                        92.20410156
+                    ]
+                ],
+                "SRC1": [
+                    [
+                        51.642,
+                        50.115
+                    ],
+                    [
+                        57.617,
+                        49.990
+                    ],
+                    [
+                        35.740,
+                        69.007
+                    ],
+                    [
+                        51.157,
+                        89.050
+                    ],
+                    [
+                        57.025,
+                        89.702
+                    ]
+                ],
+                "SRC2": [
+                    [
+                        45.031,
+                        50.118
+                    ],
+                    [
+                        65.568,
+                        50.872
+                    ],
+                    [
+                        39.677,
+                        68.111
+                    ],
+                    [
+                        45.177,
+                        86.190
+                    ],
+                    [
+                        64.246,
+                        86.758
+                    ]
+                ],
+                "SRC3": [
+                    [
+                        39.730,
+                        51.138
+                    ],
+                    [
+                        72.270,
+                        51.138
+                    ],
+                    [
+                        56.000,
+                        68.493
+                    ],
+                    [
+                        42.463,
+                        87.010
+                    ],
+                    [
+                        69.537,
+                        87.010
+                    ]
+                ],
+                "SRC4": [
+                    [
+                        46.845,
+                        50.872
+                    ],
+                    [
+                        67.382,
+                        50.118
+                    ],
+                    [
+                        72.737,
+                        68.111
+                    ],
+                    [
+                        48.167,
+                        86.758
+                    ],
+                    [
+                        67.236,
+                        86.190
+                    ]
+                ],
+                "SRC5": [
+                    [
+                        54.796,
+                        49.990
+                    ],
+                    [
+                        60.771,
+                        50.115
+                    ],
+                    [
+                        76.673,
+                        69.007
+                    ],
+                    [
+                        55.388,
+                        89.702
+                    ],
+                    [
+                        61.257,
+                        89.050
+                    ]
+                ],
+                "Arcface_src": [
+                    [
+                        38.2946,
+                        51.6963
+                    ],
+                    [
+                        73.5318,
+                        51.5014
+                    ],
+                    [
+                        56.0252,
+                        71.7366
+                    ],
+                    [
+                        41.5493,
+                        92.3655
+                    ],
+                    [
+                        70.7299,
+                        92.2041
+                    ]
+                ]
+            }
+        },
+        "Face Recognition": {
+            "InsightFace": {
+                "Input Shape": [
+                    112,
+                    112,
+                    3
+                ],
+                "Input Dims": [
+                    112,
+                    112
+                ],
+                "Embedding Dims": 512,
+                "Threshold": {
+                    "Distance": 1.000001
+                }
+            },
+            "MagFace": {
+                "Input Shape": [
+                    112,
+                    112,
+                    3
+                ],
+                "Input Dims": [
+                    112,
+                    112
+                ],
+                "Embedding Dims": 512,
+                "Threshold": {
+                    "Distance": 1.000001
+                }
+            }
+        },
+        "Vector Searching": {
+            "Faiss": {
+                "Vector Dims": 512,
+                "GPU": 0
+            }
+        }
+    }
+}

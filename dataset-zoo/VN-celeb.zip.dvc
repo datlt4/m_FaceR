@@ -1,0 +1,5 @@
+outs:
+- md5: 0a65cb774456d540fab325afcf7fd4e5
+  size: 669124619
+  path: VN-celeb.zip
+  isexec: true

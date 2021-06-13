@@ -1,0 +1,5 @@
+outs:
+- md5: b6c29524851762c9a6209e0a0550f856
+  size: 260958682
+  path: model-0000.params
+  isexec: true

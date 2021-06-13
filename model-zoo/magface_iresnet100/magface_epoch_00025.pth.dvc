@@ -1,0 +1,5 @@
+outs:
+- md5: 7337f20aa3568f06e9ee02e26ea8aa84
+  size: 283040192
+  path: magface_epoch_00025.pth
+  isexec: true
