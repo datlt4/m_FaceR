@@ -1,0 +1,10 @@
+dataset-zoo/lfw/
+dataset-zoo/VN-celeb/
+.vs/
+.vscode/
+.directory
+.DS_Store
+database/
+*.txt
+*.zip
+*.bin
